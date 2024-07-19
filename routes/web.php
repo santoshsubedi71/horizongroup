@@ -10,7 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
-Route::get('/', function () {
+Route::get('/' , function(){
+    return view('index');
+});
+Route::get('/home', function () {
     return view('home');
 
 })->middleware('auth');
