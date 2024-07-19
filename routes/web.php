@@ -28,6 +28,8 @@ Route::post('/store', [CustomersController::class, 'store'])->name('customers.st
 Route::get('/detail/{id}', [CustomersController::class, 'show'])->name('customers.detail');
 Route::get('/edit/{id}', [CustomersController::class, 'edit'])->name('customers.edit');
 
+Route::get('contact', [CustomersController::class, 'contact']);
+
 
 
 
