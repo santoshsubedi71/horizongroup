@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Customers extends Model 
+class Candidates extends Model 
 {
     use HasFactory;
 
@@ -22,7 +22,7 @@ class Customers extends Model
         'jlpt_level', 'driving_license', 'status', 'process', 'address', 'memo'
     ];
 
-    public static function insertCustomer($data) {
+    public static function insertCandidate($data) {
         
         return self::create([
             'registration_number' => $data['registration_number'], 
@@ -49,41 +49,41 @@ class Customers extends Model
         ]);
     }
 
-    public static function getAllCustomersAttributes(string $customerId){
+    public static function getAllCandidatesAttributes(string $candidateId){
 
-        $customer = self::findorfail($customerId);
-        $customers = [$customer];
+        $candidate = self::findorfail($candidateId);
+        $candidates = [$candidate];
 
-        $customerAttributes = collect($customers)->map(function ($customer){
+        $candidateAttributes = collect($candidates)->map(function ($candidate){
 
             return [
-            'id' => $customer->id,
-            'registration_number' => $customer->registration_number, 
-            'firstName' => $customer->first_name,
-            'lastName' => $customer->last_name,
-            'firstNameKana' => $customer->first_name_kana,
-            'lastNameKana' => $customer->last_name_kana,
-            'dateOfBirth' => $customer->dob,
-            'gender' => $customer->gender, 
-            'phone' => $customer->phone,
-            'email' => $customer->email,
-            'maritalStatus' => $customer->marital_status,
-            'postalCode' => $customer->postal_code,
-            'visaStatus' => $customer->visa_status,
-            'visaExpiry' => $customer->visa_expiry,
-            'educationLevel' => $customer->education_level,
-            'faculty' => $customer->faculty,
-            'jlptLevel' => $customer->jlpt_level,
-            'licenseStatus' => $customer->driving_license,
-            'status' => $customer->status,
+            'id' => $candidate->id,
+            'registration_number' => $candidate->registration_number, 
+            'firstName' => $candidate->first_name,
+            'lastName' => $candidate->last_name,
+            'firstNameKana' => $candidate->first_name_kana,
+            'lastNameKana' => $candidate->last_name_kana,
+            'dateOfBirth' => $candidate->dob,
+            'gender' => $candidate->gender, 
+            'phone' => $candidate->phone,
+            'email' => $candidate->email,
+            'maritalStatus' => $candidate->marital_status,
+            'postalCode' => $candidate->postal_code,
+            'visaStatus' => $candidate->visa_status,
+            'visaExpiry' => $candidate->visa_expiry,
+            'educationLevel' => $candidate->education_level,
+            'faculty' => $candidate->faculty,
+            'jlptLevel' => $candidate->jlpt_level,
+            'licenseStatus' => $candidate->driving_license,
+            'status' => $candidate->status,
             'process'=>0,
-            'address' => $customer->address,
-            'memo' => $customer->memo
+            'address' => $candidate->address,
+            'memo' => $candidate->memo
 
             ];
         })->toArray();
 
-        return $customerAttributes;
+        return $candidateAttributes;
     }
 
 

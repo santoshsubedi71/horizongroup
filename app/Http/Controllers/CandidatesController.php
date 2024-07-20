@@ -2,27 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\CustomersService;
+use App\Services\CandidatesService;
 use Illuminate\Http\Request;
 use App\Enums\Gender;
-use App\Models\Customers;
+use App\Models\Candidates;
 use App\Enums\WorkingStatus;
 
-class CustomersController extends Controller
+class CandidatesController extends Controller
 {
     //
 
-    protected $CustomersService;
+    protected $CandidatesService;
 
-    public function __construct(CustomersService $CustomersService)
+    public function __construct(CandidatesService $CandidatesService)
     {
-        $this->CustomersService = $CustomersService;
+        $this->CandidatesService = $CandidatesService;
     }
 
     public function index(){
 
-        $customers = $this->CustomersService->getAllCustomers();
-        return view('customers.index', compact('customers'));
+        $candidates = $this->CandidatesService->getAllCandidates();
+        return view('candidates.index', compact('candidates'));
     }
 
     public function mapGenderStringToInt(string $genderLabel): ?int {
@@ -48,7 +48,7 @@ class CustomersController extends Controller
     {
         // Fetch enum cases to pass to the Blade view
         $statuses = WorkingStatus::cases();
-        return view('customers.registration', compact('statuses'));
+        return view('candidates.registration', compact('statuses'));
     }
     
     
@@ -88,7 +88,7 @@ class CustomersController extends Controller
     $data['registration_number'] = $this->generateRegistrationNumber($data['WorkingStatus']);
 
     // Pass the data to the service
-    $this->CustomersService->store($data);
+    $this->CandidatesService->store($data);
 
     return redirect()->back()->with('success', 'Registration successful');
 }
@@ -104,7 +104,7 @@ private function generateRegistrationNumber($workingStatusValue)
         $prefix = $workingStatus->prefix();
     
         // Fetch the latest registration number that starts with this prefix
-        $latestNumber = Customers::where('registration_number', 'LIKE', "$prefix%")
+        $latestNumber = Candidates::where('registration_number', 'LIKE', "$prefix%")
                                 ->orderBy('registration_number', 'desc')
                                 ->value('registration_number');
     
@@ -120,24 +120,24 @@ private function generateRegistrationNumber($workingStatusValue)
 
     public function show($id)
     {
-        $customers = $this->CustomersService->getDetail($id);
-        return view('customers.details', ['customers' => $customers]);
+        $candidates = $this->CandidatesService->getDetail($id);
+        return view('candidates.details', ['candidates' => $candidates]);
     
     }
 
     public function edit(string $id)
     {
-        // Get the customer details
+        // Get the candidate details
         //here is using [0] , if we doesnot use 0 there is show undefine error, becouse 
         //in the model file we use toArray for getting data 
-        $customer = $this->CustomersService->show($id)[0];
+        $candidate = $this->CandidatesService->show($id)[0];
     
 
 
-        // Return the edit view with the customer details
-        return view('customers.edit', [
-            'customer' => $customer, 
-            'customersId' => $id
+        // Return the edit view with the candidate details
+        return view('candidates.edit', [
+            'candidate' => $candidate, 
+            'candidatesId' => $id
         ]);
     }
 

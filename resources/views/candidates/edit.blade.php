@@ -5,23 +5,22 @@
 <div class="content-header mb-5">
     <div class="row mb-2">
         <div class="col-sm-6">
-            <h1>Registration Form</h1>
+            <h1> Form</h1>
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item">Home</li>
-                <li class="breadcrumb-item active">Create</li>
+                <li class="breadcrumb-item active">Edit</li>
             </ol>
         </div>
     </div>
 </div>
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
 
             {{-- form start here --}}
-            <form action="{{ route('customers.store')}}" method="POST" name= "register">
+            <form action="" method="POST" name= "register">
                 @csrf
 
                 
@@ -31,14 +30,14 @@
                     <div class="mb-3 row">
                         <div class="col-md-6">
                             <label for="firstName" class="form-label">お名前（性）</label>
-                            <input type="text" class="form-control" id="firstName" name="firstName" value="{{ old('firstName')}}" 例　山田">
+                            <input type="text" class="form-control" id="firstName" name="firstName" value="{{ old('firstName', $candidate['firstName']) }}" placeholder="例　山田">
                             @error('firstName')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="col-md-6">
                             <label for="lastName" class="form-label">（名）</label>
-                            <input type="text" class="form-control" id="lastName" name="lastName" value="{{ old('lastName')}}" placeholder="例　太朗">
+                            <input type="text" class="form-control" id="lastName" name="lastName" value="{{ old('lastName', $candidate['lastName'])}}" placeholder="例　太朗">
                             @error('lastName')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -47,14 +46,14 @@
                     <div class="mb-3 row">
                         <div class="col-md-6">
                             <label for="firstNameKana" class="form-label">フリカナ (セイ)</label>
-                            <input type="text" class="form-control" id="firstNameKana" name="firstNameKana" value="{{ old('firstNameKana')}}" placeholder="例　ヤマダ">
+                            <input type="text" class="form-control" id="firstNameKana" name="firstNameKana" value="{{ old('firstNameKana', $candidate['firstNameKana'])}}" placeholder="例　ヤマダ">
                             @error('firstNameKana')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="col-md-6">
                             <label for="lastNameKana" class="form-label">（メイ）</label>
-                            <input type="text" class="form-control" id="lastNameKana" name="lastNameKana" value="{{ old('lastNameKana')}}" placeholder="例　タロウ">
+                            <input type="text" class="form-control" id="lastNameKana" name="lastNameKana" value="{{ old('lastNameKana', $candidate['lastNameKana'])}}" placeholder="例　タロウ">
                             @error('lastNameKana')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -63,7 +62,7 @@
                     <div class="mb-3 row">
                         <div class="col-md-6">
                             <label for="dob" class="form-label">生年月日</label>
-                            <input type="date" class="form-control" id="BirthDate" name="birthDate" value="{{ old('birthDate')}}">
+                            <input type="date" class="form-control" id="BirthDate" name="birthDate" value="{{ old('birthDate', $candidate['dateOfBirth'])}}">
                             @error('birthDate')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -98,7 +97,7 @@
                     <div class="mb-3 row">
                         <div class="col-md-6">
                             <label for="phone" class="form-label">携帯番号番号</label>
-                            <input type="tel" class="form-control" id="phone" name="phone" value="{{ old('phone' )}}" placeholder="ハイフン無し携帯電話番号" maxlength="11">
+                            <input type="tel" class="form-control" id="phone" name="phone" value="{{ old('phone', $candidate['phone'] )}}" placeholder="ハイフン無し携帯電話番号" maxlength="11">
                             @error('phone')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -127,7 +126,7 @@
                     <div class="mb-3 row">
                         <div class="col-md-6">
                             <label for="email" class="form-label">メールアドレス</label>
-                            <input type="mail" class="form-control" id="email" name="email" value="{{ old('email')}}"placeholder="メールアドレス入力して下さい">
+                            <input type="mail" class="form-control" id="email" name="email" value="{{ old('email', $candidate['email'])}}"placeholder="メールアドレス入力して下さい">
                             @error('email')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -136,7 +135,7 @@
                     <div class="mb-3 row">
                         <div class="col-md-3">
                             <label for="postalCode" class="form-label">郵便番号</label>
-                            <input type="text" class="form-control" id="postalCode" name="postalCode" value="{{ old('postalCode')}}" placeholder="000-0000" maxlength="8">
+                            <input type="text" class="form-control" id="postalCode" name="postalCode" value="{{ old('postalCode', $candidate['postalCode'])}}" placeholder="000-0000" maxlength="8">
                             @error('postalCode')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -145,7 +144,7 @@
                     <div class="mb-3 row">
                         <div class="col-md-10">
                             <label for="address" class="form-label">住所</label>
-                            <input type="text" class="form-control" id="address" name="address" value="{{'address'}}" placeholder="住所入力して下さい">
+                            <input type="text" class="form-control" id="address" name="address" value="{{ old('address', $candidate['address'])}}" placeholder="住所入力して下さい">
                             @error('address')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -155,7 +154,7 @@
                     <div class="mb-3 row">
                         <div class="col-md-6">
                             <label for="visaExpary" class="form-label">ビーサ有効期限</label>
-                            <input type="date" class="form-control"  name="visaExpiry" value="{{ old('visaExpiry')}}">
+                            <input type="date" class="form-control"  name="visaExpiry" value="{{ old('visaExpiry', $candidate['visaExpiry'])}}">
                             @error('visaExpiry')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -206,7 +205,7 @@
                     <div class="mb-3 row">
                         <div class="col-md-10">
                             <label for="Faculty" class="form-label">学科</label>
-                            <input type="text" class="form-control" id="faculty" name="faculty" value="{{ old('faculty')}}" placeholder="学科入力して下さい">
+                            <input type="text" class="form-control" id="faculty" name="faculty" value="{{ old('faculty', $candidate['faculty'])}}" placeholder="学科入力して下さい">
                             @error('faculty')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -223,9 +222,7 @@
                                 <div class="col-md-12">
                                     <select id="WorkingStatus" name="WorkingStatus" required>
                                         <option value="">ここ選んでください</option>
-                                        @foreach($statuses as $status)
-                                            <option value="{{ $status->value }}">{{ $status->label() }}</option>
-                                        @endforeach
+                                        
                                     </select>
                                 </div>
                             </div>
@@ -275,7 +272,7 @@
                     <div class="mb-3 row">
                         <div class="col-md-10">
                             <label for="memo" class="form-label">メーモ</label>
-                            <textarea class="form-control"  name="memo"  value="{{ old('memo')}}" placeholder="メーモ"></textarea>
+                            <textarea class="form-control"  name="memo"  value="{{ old('memo',$candidate['memo'])}}" placeholder="メーモ"></textarea>
                         </div>
                     </div>
                    
@@ -299,29 +296,6 @@
 @stop
 
 @section('js')
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-<script>
-    // Script for postal code
-
-    const postalCodeInput = document.getElementById('postalCode');
-
-    postalCodeInput.addEventListener('input', function (e) {
-        let value = e.target.value.replace(/\D/g, ''); 
-        if (value.length > 3) {
-            value = value.substring(0, 3) + '-' + value.substring(3);
-        }
-        e.target.value = value.substring(0, 8); 
-    });
-</script>
-
-<script>
-    function updatePrefix(value) {
-        // Optional: JavaScript to handle prefix updates on the client-side
-    }
-    </script>
-
-
 
 
 

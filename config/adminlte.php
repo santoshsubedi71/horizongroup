@@ -316,30 +316,56 @@ return [
             'can' => 'manage-blog',
         ],
         [
-            'text' => 'customer',
-            'url' => 'customers',
-            'icon' => 'fas fa-fw fa-user',
+            'text' => 'candidate',
+            'url' => 'candidates',
+            'icon' => 'fas fa-user-circle',
+            
         ],
         [
-            'text' => 'Vacancy List',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-handshake',
+            'text' => 'jobs',
+            'url' => 'jobs',
+            'icon' => 'fas fa-briefcase',
         ],
         [
-            'text' => 'Company List',
+            'text' => 'Company',
             'url' => 'admin',
             'icon' => 'fas fa-building',
         ],
         [
-            'text' => 'Empolyee List',
+            'text' => 'Employers',
             'url' => 'admin',
-            'icon' => 'fas fa-users',
+            'icon' => 'fas fa-user-friends',
+        ],
+        [
+            'text' => 'admin',
+            'url' => 'admin',
+            'icon' => 'fas fa-user-tie',
+        ],
+        [
+            'text' => 'Blogs',
+            'url' => 'admin',
+            'icon' => 'fas fa-list-alt',
         ],
         [
             'text' => 'Calender',
             'url' => '/calender',
-            'icon' => 'fas fa-users',
+            'icon' => 'fas fa-calendar-alt',
         ],
+        [
+            'text' => 'Front CMS',
+            'icon' => 'fas fa-th',
+            'submenu' => [
+                [
+                    'text' => 'level_one',
+                    'url' => '#',
+                ],
+                [
+                    'text' => 'level_one',
+                    'url' => '#',
+                ],
+            ],
+        ],
+        
         // [
         //     'text' => 'multilevel',
         //     'icon' => 'fas fa-fw fa-share',

@@ -1,7 +1,7 @@
 <?php
 
 
-use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\CandidatesController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -22,13 +22,13 @@ Route::get('/calender', function () {
     return view('calender');
 
 });
-Route::get('/customers', [CustomersController::class, 'index'])->name('customers.index');
-Route::get('/registration', [CustomersController::class, 'create'])->name('customers.registration');
-Route::post('/store', [CustomersController::class, 'store'])->name('customers.store');
-Route::get('/detail/{id}', [CustomersController::class, 'show'])->name('customers.detail');
-Route::get('/edit/{id}', [CustomersController::class, 'edit'])->name('customers.edit');
+Route::get('/candidates', [CandidatesController::class, 'index'])->name('candidates.index');
+Route::get('/registration', [CandidatesController::class, 'create'])->name('candidates.registration');
+Route::post('/store', [CandidatesController::class, 'store'])->name('candidates.store');
+Route::get('/detail/{id}', [CandidatesController::class, 'show'])->name('candidates.detail');
+Route::get('/edit/{id}', [CandidatesController::class, 'edit'])->name('candidates.edit');
 
-Route::get('contact', [CustomersController::class, 'contact']);
+Route::get('contact', [CandidatesController::class, 'contact']);
 
 
 

@@ -18,10 +18,10 @@
     </div>
     <div class="row">
         <div class="col-md-6 mt-5">
-            <a href="{{ route('customers.index') }}" class="btn btn-primary">BACK</a>  
+            <a href="{{ route('candidates.index') }}" class="btn btn-primary">BACK</a>  
         </div>
         <div class="col-md-12 text-right">
-            <button type="button" onclick="buttonClick({{ $customers->id}})">Edit</button> 
+            <button type="button" onclick="buttonClick({{ $candidates->id}})">Edit</button> 
         </div>
     </div>
 @stop
@@ -42,21 +42,21 @@
                             <tbody>
                                 <tr>
                                     <th width="250px">名前</th>
-                                    <td>{{ $customers->first_name }}{{ $customers->last_name}}</td>
+                                    <td>{{ $candidates->first_name }}{{ $candidates->last_name}}</td>
                                 </tr>
                                 <tr>
                                     <th>名前カナ</th>
-                                    <td>{{ $customers->first_name_kana }}{{ $customers->last_name_kana }}</td>
+                                    <td>{{ $candidates->first_name_kana }}{{ $candidates->last_name_kana }}</td>
                                 </tr>
                                 <tr>
                                     <th>生年月日</th>
-                                    <td>{{ $customers->dob }}</td>
+                                    <td>{{ $candidates->dob }}</td>
                                 </tr>
                                 <tr>
                                     <th>性別</th>
                                     <td>
                                         @foreach (\App\Enums\Gender::cases() as $gender)
-                                            @if($gender->value === $customers->gender)
+                                            @if($gender->value === $candidates->gender)
                                                 {{ $gender->label() }}
                                             @endif
                                         @endforeach
@@ -65,13 +65,13 @@
                                 </tr>
                                 <tr>
                                     <th>電話番号</th>
-                                    <td>{{ $customers->phone }}</td>
+                                    <td>{{ $candidates->phone }}</td>
                                 </tr>
                                 <tr>
                                     <th>配偶者</th>
                                     <td>
                                         @foreach (\App\Enums\MaritalStatus::cases() as $maritalStatus)
-                                            @if($maritalStatus->value === $customers->marital_status)
+                                            @if($maritalStatus->value === $candidates->marital_status)
                                                 {{ $maritalStatus->label() }}
                                             @endif
                                         @endforeach
@@ -79,25 +79,25 @@
                                 </tr>
                                 <tr>
                                     <th>メールアドレス</th>
-                                    <td>{{ $customers->email }}</td>
+                                    <td>{{ $candidates->email }}</td>
                                 </tr>
                                 <tr>
                                     <th>郵便番号</th>
-                                    <td>{{ $customers->postal_code }}</td>
+                                    <td>{{ $candidates->postal_code }}</td>
                                 </tr>
                                 <tr>
                                     <th>住所</th>
-                                    <td>{{ $customers->address }}</td>
+                                    <td>{{ $candidates->address }}</td>
                                 </tr>
                                 <tr>
                                     <th>ビーサ有効期限</th>
-                                    <td>{{ $customers->visa_expiry }}</td>
+                                    <td>{{ $candidates->visa_expiry }}</td>
                                 </tr>
                                 <tr>
                                     <th>在留資格</th>
                                     <td>
                                         @foreach (\App\Enums\visaStatus::cases() as $visaStatus)
-                                            @if($visaStatus->value === $customers->visa_status)
+                                            @if($visaStatus->value === $candidates->visa_status)
                                                 {{ $visaStatus->label() }}
                                             @endif
                                         @endforeach
@@ -107,7 +107,7 @@
                                     <th>最終学歴</th>
                                     <td>
                                         @foreach (\App\Enums\educationLevel::cases() as $educationLevel)
-                                            @if($educationLevel->value === $customers->education_level)
+                                            @if($educationLevel->value === $candidates->education_level)
                                                 {{ $gender->label() }}
                                             @endif
                                         @endforeach
@@ -120,7 +120,7 @@
                                 <tr>
                                     <th>活動ステータス</th>
                                     <td>@foreach (\App\Enums\visaStatus::cases() as $visaStatus)
-                                        @if($visaStatus->value === $customers->visa_status)
+                                        @if($visaStatus->value === $candidates->visa_status)
                                             {{ $visaStatus->label() }}
                                         @endif
                                     @endforeach
@@ -129,7 +129,7 @@
                                 <tr>
                                     <th>日本語能力レベル</th>
                                     <td>@foreach (\App\Enums\jlptlevel::cases() as $jlptLevel)
-                                        @if($jlptLevel->value === $customers->jlpt_level)
+                                        @if($jlptLevel->value === $candidates->jlpt_level)
                                             {{ $jlptLevel->label() }}
                                         @endif
                                     @endforeach
@@ -138,7 +138,7 @@
                                 <tr>
                                     <th>運転免許証</th>
                                     <td>@foreach (\App\Enums\licenseStatus::cases() as $licenseStatus)
-                                        @if($licenseStatus->value === $customers->driving_license)
+                                        @if($licenseStatus->value === $candidates->driving_license)
                                             {{ $licenseStatus->label() }}
                                         @endif
                                     @endforeach
@@ -147,7 +147,7 @@
                                 <tr>
                                     <th>限状況</th>
                                     <td>@foreach (\App\Enums\Process::cases() as $process)
-                                        @if($process->value === $customers->process)
+                                        @if($process->value === $candidates->process)
                                             {{ $process->label() }}
                                         @endif
                                     @endforeach
@@ -155,7 +155,7 @@
                                 </tr>
                                 <tr>
                                     <th>メーモ</th>
-                                    <td>{{ $customers->memo }}</td>
+                                    <td>{{ $candidates->memo }}</td>
                                 </tr>
                             </tbody>
                         </table>
