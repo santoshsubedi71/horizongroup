@@ -317,13 +317,13 @@ return [
         ],
         [
             'text' => 'candidate',
-            'url' => 'candidates',
+            'url' => '/candidates',
             'icon' => 'fas fa-user-circle',
             
         ],
         [
             'text' => 'jobs',
-            'url' => 'jobs',
+            'url' => '/jobs',
             'icon' => 'fas fa-briefcase',
         ],
         [
@@ -474,6 +474,26 @@ return [
                     'type' => 'css',
                     'asset' => false,
                     'location' => '//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css',
+                ],
+            ],
+        ],
+        'jsGrid' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//cdn.jsdelivr.net/npm/jsgrid@1.5.3/dist/jsgrid.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => '//cdn.jsdelivr.net/npm/jsgrid@1.5.3/dist/jsgrid.min.css',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => '//cdn.jsdelivr.net/npm/jsgrid@1.5.3/dist/jsgrid-theme.min.css',
                 ],
             ],
         ],

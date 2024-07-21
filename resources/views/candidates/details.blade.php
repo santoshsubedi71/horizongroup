@@ -21,7 +21,7 @@
             <a href="{{ route('candidates.index') }}" class="btn btn-primary">BACK</a>  
         </div>
         <div class="col-md-12 text-right">
-            <button type="button" onclick="buttonClick({{ $candidates->id}})">Edit</button> 
+            <button type="button" onclick="buttonClick({{ $candidates->id }})">Edit</button> 
         </div>
     </div>
 @stop
@@ -42,11 +42,11 @@
                             <tbody>
                                 <tr>
                                     <th width="250px">名前</th>
-                                    <td>{{ $candidates->first_name }}{{ $candidates->last_name}}</td>
+                                    <td>{{ $candidates->first_name }} {{ $candidates->last_name }}</td>
                                 </tr>
                                 <tr>
                                     <th>名前カナ</th>
-                                    <td>{{ $candidates->first_name_kana }}{{ $candidates->last_name_kana }}</td>
+                                    <td>{{ $candidates->first_name_kana }} {{ $candidates->last_name_kana }}</td>
                                 </tr>
                                 <tr>
                                     <th>生年月日</th>
@@ -61,7 +61,6 @@
                                             @endif
                                         @endforeach
                                     </td>
-                                    
                                 </tr>
                                 <tr>
                                     <th>電話番号</th>
@@ -96,7 +95,7 @@
                                 <tr>
                                     <th>在留資格</th>
                                     <td>
-                                        @foreach (\App\Enums\visaStatus::cases() as $visaStatus)
+                                        @foreach (\App\Enums\VisaStatus::cases() as $visaStatus)
                                             @if($visaStatus->value === $candidates->visa_status)
                                                 {{ $visaStatus->label() }}
                                             @endif
@@ -106,51 +105,55 @@
                                 <tr>
                                     <th>最終学歴</th>
                                     <td>
-                                        @foreach (\App\Enums\educationLevel::cases() as $educationLevel)
+                                        @foreach (\App\Enums\EducationLevel::cases() as $educationLevel)
                                             @if($educationLevel->value === $candidates->education_level)
-                                                {{ $gender->label() }}
+                                                {{ $educationLevel->label() }}
                                             @endif
                                         @endforeach
-                                </tr>
-                                <tr>
-                                    <th>学科</th>
-                                    <td> 
                                     </td>
                                 </tr>
                                 <tr>
+                                    <th>学科</th>
+                                    <td>{{ $candidates->subject }}</td> <!-- Assuming you have this data -->
+                                </tr>
+                                <tr>
                                     <th>活動ステータス</th>
-                                    <td>@foreach (\App\Enums\visaStatus::cases() as $visaStatus)
-                                        @if($visaStatus->value === $candidates->visa_status)
-                                            {{ $visaStatus->label() }}
-                                        @endif
-                                    @endforeach
+                                    <td>
+                                        @foreach (\App\Enums\VisaStatus::cases() as $visaStatus)
+                                            @if($visaStatus->value === $candidates->visa_status)
+                                                {{ $visaStatus->label() }}
+                                            @endif
+                                        @endforeach
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>日本語能力レベル</th>
-                                    <td>@foreach (\App\Enums\jlptlevel::cases() as $jlptLevel)
-                                        @if($jlptLevel->value === $candidates->jlpt_level)
-                                            {{ $jlptLevel->label() }}
-                                        @endif
-                                    @endforeach
+                                    <td>
+                                        @foreach (\App\Enums\JlptLevel::cases() as $jlptLevel)
+                                            @if($jlptLevel->value === $candidates->jlpt_level)
+                                                {{ $jlptLevel->label() }}
+                                            @endif
+                                        @endforeach
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>運転免許証</th>
-                                    <td>@foreach (\App\Enums\licenseStatus::cases() as $licenseStatus)
-                                        @if($licenseStatus->value === $candidates->driving_license)
-                                            {{ $licenseStatus->label() }}
-                                        @endif
-                                    @endforeach
+                                    <td>
+                                        @foreach (\App\Enums\LicenseStatus::cases() as $licenseStatus)
+                                            @if($licenseStatus->value === $candidates->driving_license)
+                                                {{ $licenseStatus->label() }}
+                                            @endif
+                                        @endforeach
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>限状況</th>
-                                    <td>@foreach (\App\Enums\Process::cases() as $process)
-                                        @if($process->value === $candidates->process)
-                                            {{ $process->label() }}
-                                        @endif
-                                    @endforeach
+                                    <td>
+                                        @foreach (\App\Enums\Process::cases() as $process)
+                                            @if($process->value === $candidates->process)
+                                                {{ $process->label() }}
+                                            @endif
+                                        @endforeach
                                     </td>
                                 </tr>
                                 <tr>
@@ -167,18 +170,9 @@
 @stop
 
 @section('js')
-
 <script>
-
-function buttonClick($id){
-
-    location.href = "/edit/" + $id;
+function buttonClick(id) {
+    location.href = "{{ route('candidates.edit', '') }}/" + id;
 }
-
-
 </script>
-
-
-
-
 @endsection

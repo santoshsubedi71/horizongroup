@@ -1,7 +1,5 @@
 @extends('adminlte::page')
 
-
-
 @section('content')
     <div class="content-header">
         <div class="row mb-2">
@@ -16,14 +14,17 @@
             </div>
         </div>
         <div class="col-md-6 mt-5">
-            <a href="{{ route('candidates.registration') }}" class="btn btn-primary">Create Client</a>
+            <a href="{{ route('candidates.registration')}}" class="btn btn-primary">Create Client</a>
             
         </div>
     </div>
 </section>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">jsGrid</h3>
+    </div>
 <div class="card-body table-responsive p-0">
-    <table class="table table-hover text-nowrap text-center" id="example1">
-        <thead>
+    <table class="table table-hover text-nowrap text-center" id="jsgrid">
         <tr>
             <th>reg id</th>
             <th>Name/Surname</th>
@@ -32,9 +33,7 @@
             <th>Process</th>
             <th></th>
         </tr>
-        </thead>
-       
-        <tbody>
+
             @foreach($candidates as $candidates)
             
        
@@ -51,8 +50,6 @@
             </td>
             </tr>
             @endforeach
-        </tbody>
-       
     </table>
 </div>
 
@@ -62,24 +59,19 @@
 
 
 <script>
-    $(function () {
-    //   $("#example1").DataTable({
-    //     "responsive": true, "lengthChange": false, "autoWidth": false,
-    //   }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-      $('#example1').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": true,
-        // "ordering": true,
-        // "info": true,
-        // "autoWidth": false,
-        "responsive": true,
-      });
+    $(document).ready(function() {
+        $('#jsGrid1').DataTable({
+            "pagingType": "numbers",
+            "pageLength": 5,
+            "searching": false,
+            "ordering": true,
+            "info": false,
+            "autoWidth": false
+        });
     });
-  </script>
-   <script>
+
     function showUserDetail(id) {
-        window.location.href = '/detail/' + id;
+        window.location.href = 'candidates/detail/' + id;
     }
 </script>
 
