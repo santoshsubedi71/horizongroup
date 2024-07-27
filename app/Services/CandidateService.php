@@ -2,14 +2,11 @@
 
 namespace App\Services;
 
-
-
-
-use App\Models\Candidates;
+use App\Models\Candidate;
 use App\Models\User;
 
 
-class CandidatesService
+class CandidateService
 {
 
 
@@ -18,24 +15,24 @@ class CandidatesService
 
     public function store($data){
 
-        candidates::insertcandidate($data);
+        candidate::insertcandidate($data);
     }
 
 
     public function getAllCandidates()
     {
-        return Candidates::all();
+        return Candidate::all();
     }
 
     public  function getDetail($id){
         
-        return Candidates::findorfail($id);
+        return Candidate::findorfail($id);
 
     }
 
     public function show(string $candidateId)
     {
-        return Candidates::getAllCandidatesAttributes($candidateId);
+        return Candidate::getAllCandidatesAttributes($candidateId);
     }
 
 

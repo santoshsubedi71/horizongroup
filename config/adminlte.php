@@ -316,7 +316,7 @@ return [
             'can' => 'manage-blog',
         ],
         [
-            'text' => 'candidate',
+            'text' => 'candidates',
             'url' => '/candidates',
             'icon' => 'fas fa-user-circle',
             
@@ -327,13 +327,13 @@ return [
             'icon' => 'fas fa-briefcase',
         ],
         [
-            'text' => 'Company',
-            'url' => 'admin',
+            'text' => 'Companies',
+            'url' => '/companies',
             'icon' => 'fas fa-building',
         ],
         [
-            'text' => 'Employers',
-            'url' => 'admin',
+            'text' => 'Employees',
+            'url' => 'employers',
             'icon' => 'fas fa-user-friends',
         ],
         [

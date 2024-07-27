@@ -1,8 +1,10 @@
 <?php
 
 
-use App\Http\Controllers\CandidatesController;
-use App\Http\Controllers\JobsController;
+use App\Http\Controllers\CandidateController;
+use App\Http\Controllers\JobController;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -24,21 +26,38 @@ Route::get('/calender', function () {
 
 });
 Route::prefix('candidates')->group(function () {
-    Route::get('/', [CandidatesController::class, 'index'])->name('candidates.index');
-    Route::get('/registration', [CandidatesController::class, 'create'])->name('candidates.registration');
-    Route::post('/store', [CandidatesController::class, 'store'])->name('candidates.store');
-    Route::get('/detail/{id}', [CandidatesController::class, 'show'])->name('candidates.detail');
-    Route::get('/edit/{id}', [CandidatesController::class, 'edit'])->name('candidates.edit');
+    Route::get('/', [CandidateController::class, 'index'])->name('candidates.index');
+    Route::get('/registration', [CandidateController::class, 'create'])->name('candidates.registration');
+    Route::post('/store', [CandidateController::class, 'store'])->name('candidates.store');
+    Route::get('/detail/{id}', [CandidateController::class, 'show'])->name('candidates.detail');
+    Route::get('/edit/{id}', [CandidateController::class, 'edit'])->name('candidates.edit');
 });
 
 
 Route::prefix('jobs')->group(function (){
-    Route::get('/', [JobsController::class, 'index'])->name('jobs.index');
-    Route::get('/create', [JobsController::class, 'create'])->name('jobs.create');
-    Route::post('/store', [JobsController::class, 'store'])->name('jobs.store');
-    Route::get('/detail/{id}', [JobsController::class, 'show'])->name('jobs.detail');
-    Route::get('/edit/{id}', [JobsController::class, 'edit'])->name('jobs.edit');
+    Route::get('/', [JobController::class, 'index'])->name('jobs.index');
+    Route::get('/create', [JobController::class, 'create'])->name('jobs.create');
+    Route::post('/store', [JobController::class, 'store'])->name('jobs.store');
+    Route::get('/detail/{id}', [JobController::class, 'show'])->name('jobs.detail');
+    Route::get('/edit/{id}', [JobController::class, 'edit'])->name('jobs.edit');
 });
+
+Route::prefix('companies')->group(function (){
+    Route::get('/', [CompanyController::class, 'index'])->name('companies.index');
+    Route::get('/create', [CompanyController::class, 'create'])->name('companies.create');
+    Route::post('/store', [CompanyController::class, 'store'])->name('companies.store');
+    Route::get('/detail/{id}', [CompanyController::class, 'show'])->name('companies.detail');
+    Route::get('/edit/{id}', [CompanyController::class, 'edit'])->name('companies.edit');
+});
+
+Route::prefix('employers')->group(function (){
+    Route::get('/', [EmployeeController::class, 'index'])->name('employer.index');
+    Route::get('/create', [EmployeeController::class, 'create'])->name('employer.create');
+    Route::post('/store', [EmployeeController::class, 'store'])->name('employer.store');
+    Route::get('/detail/{id}', [EmployeeController::class, 'show'])->name('employer.detail');
+    Route::get('/edit/{id}', [EmployeeController::class, 'edit'])->name('employer.edit');
+});
+
 
 
 

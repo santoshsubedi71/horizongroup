@@ -2,26 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\CandidatesService;
+use App\Services\CandidateService;
 use Illuminate\Http\Request;
 use App\Enums\Gender;
-use App\Models\Candidates;
+use App\Models\Candidate;
 use App\Enums\WorkingStatus;
 
-class CandidatesController extends Controller
+class CandidateController extends Controller
 {
     //
 
-    protected $CandidatesService;
+    protected $CandidateService;
 
-    public function __construct(CandidatesService $CandidatesService)
+    public function __construct(CandidateService $CandidateService)
     {
-        $this->CandidatesService = $CandidatesService;
+        $this->CandidateService = $CandidateService;
     }
 
     public function index(){
 
-        $candidates = $this->CandidatesService->getAllCandidates();
+        $candidates = $this->CandidateService->getAllCandidates();
         return view('candidates.index', compact('candidates'));
     }
 
@@ -88,7 +88,7 @@ class CandidatesController extends Controller
     $data['registration_number'] = $this->generateRegistrationNumber($data['WorkingStatus']);
 
     // Pass the data to the service
-    $this->CandidatesService->store($data);
+    $this->CandidateService->store($data);
 
     return redirect()->back()->with('success', 'Registration successful');
 }
@@ -104,7 +104,7 @@ private function generateRegistrationNumber($workingStatusValue)
         $prefix = $workingStatus->prefix();
     
         // Fetch the latest registration number that starts with this prefix
-        $latestNumber = Candidates::where('registration_number', 'LIKE', "$prefix%")
+        $latestNumber = Candidate::where('registration_number', 'LIKE', "$prefix%")
                                 ->orderBy('registration_number', 'desc')
                                 ->value('registration_number');
     
@@ -120,7 +120,7 @@ private function generateRegistrationNumber($workingStatusValue)
 
     public function show($id)
     {
-        $candidates = $this->CandidatesService->getDetail($id);
+        $candidates = $this->CandidateService->getDetail($id);
         return view('candidates.details', ['candidates' => $candidates]);
     
     }
@@ -130,7 +130,7 @@ private function generateRegistrationNumber($workingStatusValue)
         // Get the candidate details
         //here is using [0] , if we doesnot use 0 there is show undefine error, becouse 
         //in the model file we use toArray for getting data 
-        $candidate = $this->CandidatesService->show($id)[0];
+        $candidate = $this->CandidateService->show($id)[0];
     
 
 
