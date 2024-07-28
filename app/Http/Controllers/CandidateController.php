@@ -120,8 +120,8 @@ private function generateRegistrationNumber($workingStatusValue)
 
     public function show($id)
     {
-        $candidates = $this->CandidateService->getDetail($id);
-        return view('candidates.details', ['candidates' => $candidates]);
+        $candidate = $this->CandidateService->getDetail($id);
+        return view('candidates.details', ['candidate' => $candidate]);
     
     }
 
@@ -131,6 +131,9 @@ private function generateRegistrationNumber($workingStatusValue)
         //here is using [0] , if we doesnot use 0 there is show undefine error, becouse 
         //in the model file we use toArray for getting data 
         $candidate = $this->CandidateService->show($id)[0];
+   
+        
+     
     
 
 

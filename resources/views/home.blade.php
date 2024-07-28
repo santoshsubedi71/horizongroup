@@ -91,7 +91,107 @@
           <!-- /.row -->
         </div><!-- /.container-fluid -->
       </section>
-@stop
+
+
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">recent inteviews</h3>
+        </div>
+        <div class="card-body">
+            <div id="jsGrid1"></div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+  <div class="card">
+      <div class="card-header">
+          <h3 class="card-title">recent applied job</h3>
+      </div>
+      <div class="card-body">
+          <div id="jsGrid2"></div>
+      </div>
+  </div>
+</section>
+
+@endsection
+
+@section('css')
+<!-- Include jsGrid CSS -->
+
+@endsection
+
+@section('js')
+<script>
+  $(function() {
+    $("#jsGrid1").jsGrid({
+    width: "100%",
+    height: "300px",
+
+    search: true,
+    sorting: true,
+    paging: true,
+
+    data: [
+        { Name: "John Doe", Email: "sample@gmail.com", Interview_Date: "2023-07-27", Interview_Time: "10:00 AM", Assign_Member: "USA" },
+        { Name: "Jane Smith", Email: "sample@gmail.com", Interview_Date: "2023-07-28", Interview_Time: "11:00 AM", Assign_Member: "Canada" },
+        { Name: "Sam Johnson", Email: "sample@gmail.com", Interview_Date: "2023-07-29", Interview_Time: "12:00 PM", Assign_Member: "UK" },
+        { Name: "Lisa Brown", Email: "sample@gmail.com", Interview_Date: "2023-07-30", Interview_Time: "01:00 PM", Assign_Member: "Australia" },
+        { Name: "John Doe", Email: "sample@gmail.com", Interview_Date: "2023-07-27", Interview_Time: "10:00 AM", Assign_Member: "USA" },
+        { Name: "Jane Smith", Email: "sample@gmail.com", Interview_Date: "2023-07-28", Interview_Time: "11:00 AM", Assign_Member: "Canada" },
+        { Name: "Sam Johnson", Email: "sample@gmail.com", Interview_Date: "2023-07-29", Interview_Time: "12:00 PM", Assign_Member: "UK" },
+        { Name: "Lisa Brown", Email: "sample@gmail.com", Interview_Date: "2023-07-30", Interview_Time: "01:00 PM", Assign_Member: "Australia" }
+    ],
+
+    fields: [
+        { name: "Name", type: "text", width: 150 },
+        { name: "Email", type: "text", width: 150 },
+        { name: "Interview_Date", type: "text", width: 200 },
+        { name: "Interview_Time", type: "text", width: 100 },
+        { name: "Assign_Member", type: "text", width: 100 }
+    ],
+
+    onDataLoaded: function(args) {
+        // Custom logic after data is loaded, if needed
+    }
+});
+$("#jsGrid2").jsGrid({
+    width: "100%",
+    height: "300px",
+
+    search: true,
+    sorting: true,
+    paging: true,
+
+    data: [
+        { Name: "John Doe", Apply_For: "manager", Applied_Date: "2023-07-27", Experience: "USA", Stage: "review" },
+        { Name: "Jane Smith", Apply_For: "developer", Applied_Date: "2023-07-28", Experience: "Canada", Stage: "review" },
+        { Name: "Sam Johnson", Apply_For: "senior developer", Applied_Date: "2023-07-29", Experience: "UK", Stage: "making cv" },
+        { Name: "Lisa Brown", Apply_For: "project manager", Applied_Date: "2023-07-30", Experience: "Australia", Stage: "waiting for interview" },
+        { Name: "John Doe", Apply_For: "manager", Applied_Date: "2023-07-27", Experience: "USA", Stage: "review" },
+        { Name: "Jane Smith", Apply_For: "developer", Applied_Date: "2023-07-28", Experience: "Canada", Stage: "review" },
+        { Name: "Sam Johnson", Apply_For: "senior developer", Applied_Date: "2023-07-29", Experience: "UK", Stage: "making cv" },
+        { Name: "Lisa Brown", Apply_For: "project manager", Applied_Date: "2023-07-30", Experience: "Australia", Stage: "waiting for interview" }
+    ],
+
+    fields: [
+        { name: "Name", type: "text", width: 150 },
+        { name: "Apply_For", type: "text", width: 150 },
+        { name: "Applied_Date", type: "text", width: 200 },
+        { name: "Experience", type: "text", width: 150 },
+        { name: "Stage", type: "text", width: 150 }
+    ],
+
+    onDataLoaded: function(args) {
+        // Custom logic after data is loaded, if needed
+    }
+});
+
+});
+
+</script>
+@endsection
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">

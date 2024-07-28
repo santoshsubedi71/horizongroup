@@ -50,12 +50,12 @@ Route::prefix('companies')->group(function (){
     Route::get('/edit/{id}', [CompanyController::class, 'edit'])->name('companies.edit');
 });
 
-Route::prefix('employers')->group(function (){
-    Route::get('/', [EmployeeController::class, 'index'])->name('employer.index');
-    Route::get('/create', [EmployeeController::class, 'create'])->name('employer.create');
-    Route::post('/store', [EmployeeController::class, 'store'])->name('employer.store');
-    Route::get('/detail/{id}', [EmployeeController::class, 'show'])->name('employer.detail');
-    Route::get('/edit/{id}', [EmployeeController::class, 'edit'])->name('employer.edit');
+Route::prefix('employees')->group(function (){
+    Route::get('/', [EmployeeController::class, 'index'])->name('employees.index');
+    Route::get('/create', [EmployeeController::class, 'create'])->name('employees.create');
+    Route::post('/store', [EmployeeController::class, 'store'])->name('employees.store');
+    Route::get('/detail/{id}', [EmployeeController::class, 'show'])->name('employees.detail');
+    Route::get('/edit/{id}', [EmployeeController::class, 'edit'])->name('employees.edit');
 });
 
 

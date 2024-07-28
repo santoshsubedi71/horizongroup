@@ -1,24 +1,25 @@
 @extends('adminlte::page')
 
-@section('content')
-    <div class="content-header">
+
+@section('content_header')
+<div class="content-header">
+    <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>CLIENT LISTS</h1>
             </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item">Home</li>
-                    <li class="breadcrumb-item active">Client List</li>
-                </ol>
+            <div class="col-sm-6 text-right">
+                <a href="{{ route('candidates.registration')}}" class="btn btn-outline-info">Create candidates</a>
+
             </div>
-        </div>
-        <div class="col-md-6 mt-5">
-            <a href="{{ route('candidates.registration')}}" class="btn btn-primary">Create Client</a>
-            
         </div>
     </div>
-</section>
+</div>
+@endsection
+
+
+@section('content')
+
+      
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">jsGrid</h3>
@@ -44,9 +45,13 @@
             <td>{{ \App\Enums\WorkingStatus::from ($candidates->status)->label() }}</td>
             <td>{{ \App\Enums\Process::from($candidates->process)->label() }}</td>
             <td>
-                <a type="button" oneclick="showDetail()" class="link-icon"><i class="fa fa-info-circle"
-                    aria-hidden="true"></i></a>
-                    <button class="btn btn-primary" onclick="showUserDetail({{ $candidates->id}})">View Details</button>
+                <a type="button" oneclick="showDetail()" class="link-icon">
+                    <button class="btn btn-dark" onclick="showUserDetail({{ $candidates->id }})">
+                        <i class="fa fa-info-circle bg-transparents mr-1" aria-hidden="true" style="color: white;"></i>
+                        View Details
+                    </button>
+                </a>
+                
             </td>
             </tr>
             @endforeach

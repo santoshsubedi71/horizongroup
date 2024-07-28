@@ -315,6 +315,35 @@ return [
             'url' => '/',
             'can' => 'manage-blog',
         ],
+        ['header' => 'HOME'],
+        [
+            'text' => 'Dashboard',
+            'url' => '/home',
+            'icon' => 'fas fa-home',
+            
+        ],
+        [
+            'text' => 'Staff Management',
+            'icon' => 'fas fa-user-friends',
+            'submenu' => [
+                [
+                    'text' => 'admins',
+                    'url' => 'admin',
+                    'icon' => 'fas fa-user-tie',
+                ],
+                [
+                    'text' => 'Employees',
+                    'url' => 'employers',
+                    'icon' => 'fas fa-users',
+                ],
+                [
+                    'text' => 'roles',
+                    'url' => 'roles',
+                    'icon' => 'fas fa-cog',
+                ],
+            ],
+        ],
+        ['header' => 'Business Management'],
         [
             'text' => 'candidates',
             'url' => '/candidates',
@@ -332,15 +361,12 @@ return [
             'icon' => 'fas fa-building',
         ],
         [
-            'text' => 'Employees',
-            'url' => 'employers',
-            'icon' => 'fas fa-user-friends',
+            'text' => 'Interviews',
+            'url' => '/interviews',
+            'icon' => 'fas fa-desktop',
         ],
-        [
-            'text' => 'admin',
-            'url' => 'admin',
-            'icon' => 'fas fa-user-tie',
-        ],
+        
+       
         [
             'text' => 'Blogs',
             'url' => 'admin',

@@ -1,33 +1,20 @@
 @extends('adminlte::page')
 
-@section('title', 'jsGrid Example')
+@section('content')
 
-@section('content_header')
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Jobs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Job Categories</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Job Types</a>
-                    </li>
-                </ul>
             </div>
             <div class="col-sm-6 text-right">
-                <a href="{{ route('jobs.create')}}" class="btn btn-outline-info">Add Jobs</a>
+                <a href="" class="btn btn-outline-info">Add Company</a>
+
             </div>
         </div>
     </div>
 </div>
-@endsection
 
-@section('content')
 <section class="content">
     <div class="card">
         <div class="card-header">
