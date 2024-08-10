@@ -6,6 +6,8 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\HomeController;
+use App\Models\Candidate;
+use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,18 +15,25 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
-Route::get('/' , function(){
-    return view('index');
-});
+// Route::get('/' , function(){
+//     return view('index');
+// });
+
+
 Route::get('/home', function () {
     return view('home');
 
 })->middleware('auth');
 
-Route::get('/calender', function () {
-    return view('calender');
 
+Route::prefix('/')->group(function () {
+    Route::get('/', [FrontController::class, 'index'])->name('main.index');
+    Route::get('contact', [FrontController::class, 'contact'])->name('front.contact');
+    Route::get('job', [FrontController::class, 'job'])->name('front.job');
+    Route::get('company', [FrontController::class, 'company'])->name('front.company');
+    Route::get('about', [FrontController::class, 'about'])->name('front.about');
 });
+
 Route::prefix('candidates')->group(function () {
     Route::get('/', [CandidateController::class, 'index'])->name('candidates.index');
     Route::get('/registration', [CandidateController::class, 'create'])->name('candidates.registration');
